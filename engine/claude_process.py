@@ -30,15 +30,12 @@ class ClaudeProcess(Engine):
     def start(self, tool_defs: list[ToolDef] | None = None,
               on_event: Callable[[ParsedEvent], None] = None,
               system_prompt: str | None = None,
-              skip_permissions: bool = False,
-              mcp_config: str | None = None):
+              skip_permissions: bool = False):
         self._on_event = on_event
 
         cmd = list(_BASE_CMD)
         if skip_permissions:
             cmd += ["--dangerously-skip-permissions"]
-        if mcp_config:
-            cmd += ["--mcp-config", mcp_config]
         if system_prompt:
             cmd += ["--system-prompt", system_prompt]
         tool_prompt = build_tool_prompt(tool_defs) if tool_defs else None
