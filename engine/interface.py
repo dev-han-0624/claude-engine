@@ -49,7 +49,8 @@ class Engine(ABC):
     def start(self, tool_defs: list[ToolDef] | None = None,
               on_event: Callable[[ParsedEvent], None] = None,
               system_prompt: str | None = None,
-              skip_permissions: bool = False) -> None:
+              skip_permissions: bool = False,
+              mcp_config: str | None = None) -> None:
         pass
 
     @abstractmethod
